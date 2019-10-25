@@ -1,0 +1,20 @@
+vscode:
+  extensions:
+    - fivethree.vscode-ionic-snippets@1.7.1:u6NG/7KskZ8Usfdu0Y/MuQ==
+    - formulahendry.auto-rename-tag@0.1.0:/DaYBGQJ0OJXTfLl4zwBLA==
+    - steoates.autoimport@1.5.3:ssEPucpXsRjqSbJX1bW0YA==
+    - formulahendry.auto-close-tag@0.5.6:oZ/8R2VhZEhkHsoeO57hSw==
+    - aaron-bond.better-comments@2.0.5:YKNfOclR4e8XAxlj4xp2AA==
+    - johnpapa.Angular2@8.1.1:5n047Q4w8oMstLXJadb7tg==
+    - Mikael.Angular-BeastCode@8.0.10:J7aGjVXXDeyuqnhsk+vMYw==
+    - CoenraadS.bracket-pair-colorizer@1.0.61:fqPT1sJEqaEdrfXeYbdW+A==
+    - eg2.vscode-npm-script@0.3.9:FTjGx1Gmz+E5EP1FHaYLqQ==
+    - christian-kohler.npm-intellisense@1.3.0:yQtCdwoyo890Bn9NOEuEDA==
+    - abusaidm.html-snippets@0.2.1:7b7Vkkp6Lem9WOqKCYMq2w==
+    - Zignd.html-css-class-completion@1.19.0:b3YWQQIEP1z3u93nyLX0UA==
+    - ms-vscode.vscode-typescript-tslint-plugin@1.2.2:Jw3ra3MlKUzHrWQODXxjUw==
+    - christian-kohler.path-intellisense@1.4.2:QnOrf5fk6KiVaQs4cNEP+w==
+    - dbaeumer.vscode-eslint@1.9.1:YVcwmzKVVl+zZ+wMB02GjQ==
+    - xabikos.JavaScriptSnippets@1.7.2:XXmiw8r7K3Guifex/E73aQ==
+    - eamodio.gitlens@10.1.1:W/mM/phTCRJ9XghzvZRI4g==
+    - redhat.vscode-yaml@0.5.3:9PocMeslVen4COl7FQruRA==
