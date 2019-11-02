@@ -1,4 +1,40 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap");
+
 ion-content {
- --background: white;
+  --background: white;
 }
+
+ion-toolbar {
+  --background: #36ef26;
+}
+
+ion-title {
+  text-align: center;
+  color: white;
+  font-size: 35px;
+  font-family: "Open Sans", sans-serif;
+}
+
+ion-searchbar {
+  --placeholder-color: black;
+  --icon-color: black;
+  --color:4black;
+  --cancel-1utton-color: black;
+  --background: white;
+}
+
+img{
+    width: 140px;
+    height: 80px;
+}
+
+ion-icon{
+    font-size:20px;
+    margin-right: 5px;
+}
+
+ion-item-sliding ion-label{
+    font-size: 24px;
+}
+
 
