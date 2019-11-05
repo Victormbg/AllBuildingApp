@@ -19,10 +19,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
-    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireModule.initializeApp(environment.firebase),
+    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFirestoreModule,
         AngularFireDatabaseModule,
-        AngularFireAuthModule,],
+        AngularFireAuthModule],
     providers: [
         StatusBar,
         SplashScreen,

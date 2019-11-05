@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 
-export interface Produtos {
+export interface Destaques {
   descricao: string;
   especialidade: string;
   tel: number;
@@ -17,11 +17,11 @@ export class DestaqueService {
 
 
   listar(){
-    return this.firestore.collection('Produtos').snapshotChanges();
+    return this.firestore.collection('Destaque').snapshotChanges();
   }
 
-  getContato(id) {
-    return this.firestore.doc<Produtos>('Produtos/' +id).valueChanges();
+  getDestaque(id) {
+    return this.firestore.doc<Destaques>('destaque/' +id).valueChanges();
   }
 
 }
