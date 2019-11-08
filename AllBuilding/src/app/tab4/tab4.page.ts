@@ -7,7 +7,7 @@ import { DestaqueService } from '../services/destaque.service';
   styleUrls: ['./tab4.page.scss'],
 })
 export class Tab4Page implements OnInit {
-  id?: string;
+  id?: number;
   descricao: string;
   especialidade: string;
   tel: number;
@@ -18,6 +18,7 @@ export class Tab4Page implements OnInit {
   constructor(private DesSer: DestaqueService) { }
 
   ngOnInit() {
+     console.log("teste1"); 
     this.DesSer.listar().subscribe(data => {
       this.produto = data.map(e => {
         return{

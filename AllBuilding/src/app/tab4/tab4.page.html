@@ -5,7 +5,7 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of produto">
+    <ion-item *ngFor="let item of produto" [routerLink]="['/tab1', item.id]">
       <ion-item-sliding class="esq" side="start">
         <img src="../../assets/img.jpg" />
       </ion-item-sliding>

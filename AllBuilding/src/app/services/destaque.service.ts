@@ -6,6 +6,7 @@ export interface Destaques {
   descricao: string;
   especialidade: string;
   tel: number;
+  id: number;
   titulo: string;
 }
 
@@ -17,7 +18,8 @@ export class DestaqueService {
 
 
   listar(){
-    return this.firestore.collection('Destaque').snapshotChanges();
+    console.log("teste2");
+    return this.firestore.collection('destaque').snapshotChanges();
   }
 
   getDestaque(id) {
