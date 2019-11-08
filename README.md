@@ -34,3 +34,7 @@ Victor Manuel<br>
 
 Fase 7 - Teste de Software
 Fase 8 - Implantação
+
+# COMANDOS
+npm install --save firebase @angular/fire
+npm install firebase  angularfire2 --save
