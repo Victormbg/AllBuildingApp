@@ -38,3 +38,6 @@ Fase 8 - Implantação
 # COMANDOS
 npm install --save firebase @angular/fire
 npm install firebase  angularfire2 --save
+
+# LINK DO SITE
+https://sites.google.com/view/allbuilding/p%C3%A1gina-inicial

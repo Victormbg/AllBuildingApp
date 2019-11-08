@@ -5,7 +5,8 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of produto" [routerLink]="['/tab1', item.id]">
+    <IonCard>
+        <ion-item *ngFor="let item of produto" [routerLink]="['/tab1', item.id]">
       <ion-item-sliding class="esq" side="start">
         <img src="../../assets/img.jpg" />
       </ion-item-sliding>
@@ -15,5 +16,8 @@
         <ion-label><ion-icon name="call"></ion-icon>{{item.tel}}</ion-label>
       </ion-item-sliding>
     </ion-item>
+    </IonCard>
+
+
   </ion-list>
 </ion-content>
