@@ -29,6 +29,8 @@
    otherwise specified.
 */
 
+#include <grpc/support/port_platform.h>
+
 #include "src/core/lib/iomgr/port.h"
 
 #ifdef GRPC_WINSOCK_SOCKET
@@ -43,6 +45,8 @@ grpc_endpoint* grpc_tcp_create(grpc_winsocket* socket,
                                const char* peer_string);
 
 grpc_error* grpc_tcp_prepare_socket(SOCKET sock);
+
+grpc_error* grpc_tcp_set_non_block(SOCKET sock);
 
 #endif
 

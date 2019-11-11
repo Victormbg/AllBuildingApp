@@ -16,10 +16,13 @@
  *
  */
 
+#include <grpc/support/port_platform.h>
+
 #include <grpc/support/log.h>
 
 #include "src/core/lib/compression/stream_compression.h"
 #include "src/core/lib/compression/stream_compression_gzip.h"
+#include "src/core/lib/slice/slice_utils.h"
 
 extern const grpc_stream_compression_vtable
     grpc_stream_compression_identity_vtable;
@@ -63,11 +66,11 @@ void grpc_stream_compression_context_destroy(
 int grpc_stream_compression_method_parse(
     grpc_slice value, bool is_compress,
     grpc_stream_compression_method* method) {
-  if (grpc_slice_eq(value, GRPC_MDSTR_IDENTITY)) {
+  if (grpc_slice_eq_static_interned(value, GRPC_MDSTR_IDENTITY)) {
     *method = is_compress ? GRPC_STREAM_COMPRESSION_IDENTITY_COMPRESS
                           : GRPC_STREAM_COMPRESSION_IDENTITY_DECOMPRESS;
     return 1;
-  } else if (grpc_slice_eq(value, GRPC_MDSTR_GZIP)) {
+  } else if (grpc_slice_eq_static_interned(value, GRPC_MDSTR_GZIP)) {
     *method = is_compress ? GRPC_STREAM_COMPRESSION_GZIP_COMPRESS
                           : GRPC_STREAM_COMPRESSION_GZIP_DECOMPRESS;
     return 1;

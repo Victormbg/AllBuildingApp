@@ -114,6 +114,7 @@ inline grpc_closure* grpc_closure_init(grpc_closure* closure,
   closure->cb = cb;
   closure->cb_arg = cb_arg;
   closure->scheduler = scheduler;
+  closure->error_data.error = GRPC_ERROR_NONE;
 #ifndef NDEBUG
   closure->scheduled = false;
   closure->file_initiated = nullptr;
@@ -253,8 +254,8 @@ inline void grpc_closure_run(grpc_closure* c, grpc_error* error) {
     c->file_initiated = file;
     c->line_initiated = line;
     c->run = true;
+    GPR_ASSERT(c->cb != nullptr);
 #endif
-    assert(c->cb);
     c->scheduler->vtable->run(c, error);
   } else {
     GRPC_ERROR_UNREF(error);
@@ -283,17 +284,18 @@ inline void grpc_closure_sched(grpc_closure* c, grpc_error* error) {
     if (c->scheduled) {
       gpr_log(GPR_ERROR,
               "Closure already scheduled. (closure: %p, created: [%s:%d], "
-              "previously scheduled at: [%s: %d] run?: %s",
+              "previously scheduled at: [%s: %d], newly scheduled at [%s: %d], "
+              "run?: %s",
               c, c->file_created, c->line_created, c->file_initiated,
-              c->line_initiated, c->run ? "true" : "false");
+              c->line_initiated, file, line, c->run ? "true" : "false");
       abort();
     }
     c->scheduled = true;
     c->file_initiated = file;
     c->line_initiated = line;
     c->run = false;
+    GPR_ASSERT(c->cb != nullptr);
 #endif
-    assert(c->cb);
     c->scheduler->vtable->sched(c, error);
   } else {
     GRPC_ERROR_UNREF(error);
@@ -330,8 +332,8 @@ inline void grpc_closure_list_sched(grpc_closure_list* list) {
     c->file_initiated = file;
     c->line_initiated = line;
     c->run = false;
+    GPR_ASSERT(c->cb != nullptr);
 #endif
-    assert(c->cb);
     c->scheduler->vtable->sched(c, c->error_data.error);
     c = next;
   }

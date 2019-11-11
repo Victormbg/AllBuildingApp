@@ -19,6 +19,8 @@
 #ifndef GRPC_CORE_LIB_IOMGR_SOCKET_UTILS_POSIX_H
 #define GRPC_CORE_LIB_IOMGR_SOCKET_UTILS_POSIX_H
 
+#include <grpc/support/port_platform.h>
+
 #include "src/core/lib/iomgr/resolve_address.h"
 
 #include <sys/socket.h>
@@ -42,11 +44,21 @@ grpc_error* grpc_set_socket_cloexec(int fd, int close_on_exec);
 /* set a socket to reuse old addresses */
 grpc_error* grpc_set_socket_reuse_addr(int fd, int reuse);
 
+/* return true if SO_REUSEPORT is supported */
+bool grpc_is_socket_reuse_port_supported();
+
 /* disable nagle */
 grpc_error* grpc_set_socket_low_latency(int fd, int low_latency);
 
 /* set SO_REUSEPORT */
 grpc_error* grpc_set_socket_reuse_port(int fd, int reuse);
+
+/* Configure the default values for TCP_USER_TIMEOUT */
+void config_default_tcp_user_timeout(bool enable, int timeout, bool is_client);
+
+/* Set TCP_USER_TIMEOUT */
+grpc_error* grpc_set_socket_tcp_user_timeout(
+    int fd, const grpc_channel_args* channel_args, bool is_client);
 
 /* Returns true if this system can create AF_INET6 sockets bound to ::1.
    The value is probed once, and cached for the life of the process.

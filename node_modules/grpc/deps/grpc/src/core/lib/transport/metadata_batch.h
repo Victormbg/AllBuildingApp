@@ -19,19 +19,23 @@
 #ifndef GRPC_CORE_LIB_TRANSPORT_METADATA_BATCH_H
 #define GRPC_CORE_LIB_TRANSPORT_METADATA_BATCH_H
 
+#include <grpc/support/port_platform.h>
+
 #include <stdbool.h>
 
 #include <grpc/grpc.h>
 #include <grpc/slice.h>
-#include <grpc/support/port_platform.h>
 #include <grpc/support/time.h>
+#include "src/core/lib/iomgr/exec_ctx.h"
 #include "src/core/lib/transport/metadata.h"
 #include "src/core/lib/transport/static_metadata.h"
 
 typedef struct grpc_linked_mdelem {
+  grpc_linked_mdelem() {}
+
   grpc_mdelem md;
-  struct grpc_linked_mdelem* next;
-  struct grpc_linked_mdelem* prev;
+  struct grpc_linked_mdelem* next = nullptr;
+  struct grpc_linked_mdelem* prev = nullptr;
   void* reserved;
 } grpc_linked_mdelem;
 
@@ -63,6 +67,8 @@ size_t grpc_metadata_batch_size(grpc_metadata_batch* batch);
 /** Remove \a storage from the batch, unreffing the mdelem contained */
 void grpc_metadata_batch_remove(grpc_metadata_batch* batch,
                                 grpc_linked_mdelem* storage);
+void grpc_metadata_batch_remove(grpc_metadata_batch* batch,
+                                grpc_metadata_batch_callouts_index idx);
 
 /** Substitute a new mdelem for an old value */
 grpc_error* grpc_metadata_batch_substitute(grpc_metadata_batch* batch,
@@ -70,7 +76,7 @@ grpc_error* grpc_metadata_batch_substitute(grpc_metadata_batch* batch,
                                            grpc_mdelem new_value);
 
 void grpc_metadata_batch_set_value(grpc_linked_mdelem* storage,
-                                   grpc_slice value);
+                                   const grpc_slice& value);
 
 /** Add \a storage to the beginning of \a batch. storage->md is
     assumed to be valid.
@@ -80,6 +86,10 @@ void grpc_metadata_batch_set_value(grpc_linked_mdelem* storage,
 grpc_error* grpc_metadata_batch_link_head(grpc_metadata_batch* batch,
                                           grpc_linked_mdelem* storage)
     GRPC_MUST_USE_RESULT;
+grpc_error* grpc_metadata_batch_link_head(
+    grpc_metadata_batch* batch, grpc_linked_mdelem* storage,
+    grpc_metadata_batch_callouts_index idx) GRPC_MUST_USE_RESULT;
+
 /** Add \a storage to the end of \a batch. storage->md is
     assumed to be valid.
     \a storage is owned by the caller and must survive for the
@@ -88,6 +98,9 @@ grpc_error* grpc_metadata_batch_link_head(grpc_metadata_batch* batch,
 grpc_error* grpc_metadata_batch_link_tail(grpc_metadata_batch* batch,
                                           grpc_linked_mdelem* storage)
     GRPC_MUST_USE_RESULT;
+grpc_error* grpc_metadata_batch_link_tail(
+    grpc_metadata_batch* batch, grpc_linked_mdelem* storage,
+    grpc_metadata_batch_callouts_index idx) GRPC_MUST_USE_RESULT;
 
 /** Add \a elem_to_add as the first element in \a batch, using
     \a storage as backing storage for the linked list element.
@@ -98,6 +111,23 @@ grpc_error* grpc_metadata_batch_link_tail(grpc_metadata_batch* batch,
 grpc_error* grpc_metadata_batch_add_head(
     grpc_metadata_batch* batch, grpc_linked_mdelem* storage,
     grpc_mdelem elem_to_add) GRPC_MUST_USE_RESULT;
+
+// TODO(arjunroy, roth): Remove redundant methods.
+// add/link_head/tail are almost identical.
+inline grpc_error* GRPC_MUST_USE_RESULT grpc_metadata_batch_add_head(
+    grpc_metadata_batch* batch, grpc_linked_mdelem* storage,
+    grpc_metadata_batch_callouts_index idx) {
+  return grpc_metadata_batch_link_head(batch, storage, idx);
+}
+
+inline grpc_error* GRPC_MUST_USE_RESULT grpc_metadata_batch_add_head(
+    grpc_metadata_batch* batch, grpc_linked_mdelem* storage,
+    grpc_mdelem elem_to_add, grpc_metadata_batch_callouts_index idx) {
+  GPR_DEBUG_ASSERT(!GRPC_MDISNULL(elem_to_add));
+  storage->md = elem_to_add;
+  return grpc_metadata_batch_add_head(batch, storage, idx);
+}
+
 /** Add \a elem_to_add as the last element in \a batch, using
     \a storage as backing storage for the linked list element.
     \a storage is owned by the caller and must survive for the
@@ -107,6 +137,20 @@ grpc_error* grpc_metadata_batch_add_head(
 grpc_error* grpc_metadata_batch_add_tail(
     grpc_metadata_batch* batch, grpc_linked_mdelem* storage,
     grpc_mdelem elem_to_add) GRPC_MUST_USE_RESULT;
+
+inline grpc_error* GRPC_MUST_USE_RESULT grpc_metadata_batch_add_tail(
+    grpc_metadata_batch* batch, grpc_linked_mdelem* storage,
+    grpc_metadata_batch_callouts_index idx) {
+  return grpc_metadata_batch_link_tail(batch, storage, idx);
+}
+
+inline grpc_error* GRPC_MUST_USE_RESULT grpc_metadata_batch_add_tail(
+    grpc_metadata_batch* batch, grpc_linked_mdelem* storage,
+    grpc_mdelem elem_to_add, grpc_metadata_batch_callouts_index idx) {
+  GPR_DEBUG_ASSERT(!GRPC_MDISNULL(elem_to_add));
+  storage->md = elem_to_add;
+  return grpc_metadata_batch_add_tail(batch, storage, idx);
+}
 
 grpc_error* grpc_attach_md_to_error(grpc_error* src, grpc_mdelem md);
 
@@ -135,5 +179,14 @@ void grpc_metadata_batch_assert_ok(grpc_metadata_batch* comd);
   do {                                      \
   } while (0)
 #endif
+
+/// Copies \a src to \a dst.  \a storage must point to an array of
+/// \a grpc_linked_mdelem structs of at least the same size as \a src.
+void grpc_metadata_batch_copy(grpc_metadata_batch* src,
+                              grpc_metadata_batch* dst,
+                              grpc_linked_mdelem* storage);
+
+void grpc_metadata_batch_move(grpc_metadata_batch* src,
+                              grpc_metadata_batch* dst);
 
 #endif /* GRPC_CORE_LIB_TRANSPORT_METADATA_BATCH_H */

@@ -1,57 +1,58 @@
 <ion-content class="swiper-no-swiping bg-image no-scroll" padding center text-center>
-      <div class="container">
-         <ion-img src="assets/img/AppLogo.png"></ion-img>
-         <ion-segment (ionChange)="segmentChanged($event)">
-            <ion-segment-button value="login">
-               <ion-label>Login</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="cadastro">
-               <ion-label>Cadastro</ion-label>
-            </ion-segment-button>
-         </ion-segment>
-      </div>
-      <ion-slides>
-         <ion-slide>
-               <ion-content padding center text-center>
-               <div class="slide-inner ion-padding">
-               <ion-title>Faça Login</ion-title>
-                  <ion-list>
-                     <ion-item class=ion-margin-top lines="none">
-                        <ion-input placeholder="E-mail" type="email" [(ngModel)]="userLogin.email" ></ion-input>
-                     </ion-item>
-                     <ion-item class=ion-margin-top lines="none">
-                        <ion-input placeholder="Senha" type="password" [(ngModel)]="userLogin.password"></ion-input>
-                     </ion-item>
-                  </ion-list>
-                  <ion-button class=ion-margin-top color = secondary se expand="full" (click)="login()">Entrar</ion-button>
-                </div>
-                </ion-content>
-              
-         </ion-slide>
-         <ion-slide>
-               <ion-content padding center text-center>
-                     <div class="slide-inner ion-padding">
-                           <ion-title>Cadastre-se</ion-title>
-            <ion-list>
-               <ion-item class=ion-margin-top lines="none">
-                  <ion-input placeholder="E-mail" type="email" [(ngModel)]="userRegister.email"></ion-input>
-               </ion-item>
-     
-               <ion-item class=ion-margin-top lines="none">
-                  <ion-input placeholder="Senha" type="password" [(ngModel)]="userRegister.password"></ion-input>
-               </ion-item>
-     
+	<div class="container">
+		<ion-img src="assets/img/AppLogo.png"></ion-img>
+		<ion-segment (ionChange)="segmentChanged($event)">
+			<ion-segment-button value="login">
+				<ion-label>Login</ion-label>
+			</ion-segment-button>
+			<ion-segment-button value="cadastro">
+				<ion-label>Cadastro</ion-label>
+			</ion-segment-button>
+		</ion-segment>
+	</div>
+	<ion-slides>
+		<ion-slide>
+			<ion-content padding center text-center>
+				<div class="slide-inner ion-padding">
+					<ion-title>Faça Login</ion-title>
+					<ion-list>
+						<ion-item class=ion-margin-top lines="none">
+							<ion-input placeholder="E-mail" type="email" [(ngModel)]="userLogin.email"></ion-input>
+						</ion-item>
+						<ion-item class=ion-margin-top lines="none">
+							<ion-input placeholder="Senha" type="password" [(ngModel)]="userLogin.password"></ion-input>
+						</ion-item>
+					</ion-list>
+					<ion-button class=ion-margin-top color=secondary se expand="full" (click)="login()">Entrar
+					</ion-button>
+				</div>
+			</ion-content>
 
-            </ion-list>
-  
-               <ion-button class=ion-margin-top color = danger expand="full" (click)="register()">Cadastrar</ion-button>
-         </div>
+		</ion-slide>
+		<ion-slide>
+			<ion-content padding center text-center>
+				<div class="slide-inner ion-padding">
+					<ion-title>Cadastre-se</ion-title>
+					<ion-list>
+						<ion-item class=ion-margin-top lines="none">
+							<ion-input placeholder="E-mail" type="email" [(ngModel)]="userRegister.email"></ion-input>
+						</ion-item>
 
-            </ion-content>
-           
-         </ion-slide>
-         
-      </ion-slides>
-   </ion-content>
+						<ion-item class=ion-margin-top lines="none">
+							<ion-input placeholder="Senha" type="password" [(ngModel)]="userRegister.password">
+							</ion-input>
+						</ion-item>
 
-  
+
+					</ion-list>
+
+					<ion-button class=ion-margin-top color=danger expand="full" (click)="register()">Cadastrar
+					</ion-button>
+				</div>
+
+			</ion-content>
+
+		</ion-slide>
+
+	</ion-slides>
+</ion-content>

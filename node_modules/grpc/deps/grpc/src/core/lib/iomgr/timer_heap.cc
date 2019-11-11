@@ -16,9 +16,9 @@
  *
  */
 
-#include "src/core/lib/iomgr/port.h"
+#include <grpc/support/port_platform.h>
 
-#ifdef GRPC_TIMER_USE_GENERIC
+#include "src/core/lib/iomgr/port.h"
 
 #include "src/core/lib/iomgr/timer_heap.h"
 
@@ -95,7 +95,7 @@ void grpc_timer_heap_init(grpc_timer_heap* heap) {
 
 void grpc_timer_heap_destroy(grpc_timer_heap* heap) { gpr_free(heap->timers); }
 
-int grpc_timer_heap_add(grpc_timer_heap* heap, grpc_timer* timer) {
+bool grpc_timer_heap_add(grpc_timer_heap* heap, grpc_timer* timer) {
   if (heap->timer_count == heap->timer_capacity) {
     heap->timer_capacity =
         GPR_MAX(heap->timer_capacity + 1, heap->timer_capacity * 3 / 2);
@@ -122,7 +122,7 @@ void grpc_timer_heap_remove(grpc_timer_heap* heap, grpc_timer* timer) {
   note_changed_priority(heap, heap->timers[i]);
 }
 
-int grpc_timer_heap_is_empty(grpc_timer_heap* heap) {
+bool grpc_timer_heap_is_empty(grpc_timer_heap* heap) {
   return heap->timer_count == 0;
 }
 
@@ -133,5 +133,3 @@ grpc_timer* grpc_timer_heap_top(grpc_timer_heap* heap) {
 void grpc_timer_heap_pop(grpc_timer_heap* heap) {
   grpc_timer_heap_remove(heap, grpc_timer_heap_top(heap));
 }
-
-#endif /* GRPC_TIMER_USE_GENERIC */

@@ -1,26 +1,21 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-
+import { Injectable } from "@angular/core";
+import { CanActivate, Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { AuthService } from "../services/auth.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
-export class LoginGuard implements CanActivate  {
-  constructor(private authService: AuthService, private router: Router){
+export class LoginGuard implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) {}
 
-  }
-  
   canActivate(): Promise<boolean> {
-return new Promise(resolve =>{
-this.authService.getAuth().onAuthStateChanged(user =>{
-  if (user) this.router.navigate(['testelogin']);
+    return new Promise(resolve => {
+      this.authService.getAuth().onAuthStateChanged(user => {
+        if (user) this.router.navigate(["/tabs/tab4"]);
 
-  resolve(!user ? true : false)
-})
-});
+        resolve(!user ? true : false);
+      });
+    });
   }
-  }
-
- 
+}

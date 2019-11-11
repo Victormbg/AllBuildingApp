@@ -16,6 +16,8 @@
  *
  */
 
+#include <grpc/support/port_platform.h>
+
 #include "src/core/lib/iomgr/port.h"
 
 #ifdef GRPC_WINSOCK_SOCKET
@@ -28,7 +30,7 @@
 #include <grpc/support/log_windows.h>
 
 #include "src/core/lib/debug/stats.h"
-#include "src/core/lib/gpr/thd.h"
+#include "src/core/lib/gprpp/thd.h"
 #include "src/core/lib/iomgr/iocp_windows.h"
 #include "src/core/lib/iomgr/iomgr_internal.h"
 #include "src/core/lib/iomgr/socket_windows.h"
@@ -87,10 +89,15 @@ grpc_iocp_work_status grpc_iocp_work(grpc_millis deadline) {
   } else {
     abort();
   }
-  success = WSAGetOverlappedResult(socket->socket, &info->overlapped, &bytes,
-                                   FALSE, &flags);
-  info->bytes_transfered = bytes;
-  info->wsa_error = success ? 0 : WSAGetLastError();
+  if (socket->shutdown_called) {
+    info->bytes_transferred = 0;
+    info->wsa_error = WSA_OPERATION_ABORTED;
+  } else {
+    success = WSAGetOverlappedResult(socket->socket, &info->overlapped, &bytes,
+                                     FALSE, &flags);
+    info->bytes_transferred = bytes;
+    info->wsa_error = success ? 0 : WSAGetLastError();
+  }
   GPR_ASSERT(overlapped == &info->overlapped);
   grpc_socket_become_ready(socket, info);
   return GRPC_IOCP_WORK_WORK;

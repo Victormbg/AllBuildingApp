@@ -19,11 +19,11 @@
 #ifndef GRPC_CORE_EXT_TRANSPORT_CHTTP2_TRANSPORT_FRAME_GOAWAY_H
 #define GRPC_CORE_EXT_TRANSPORT_CHTTP2_TRANSPORT_FRAME_GOAWAY_H
 
+#include <grpc/support/port_platform.h>
+
 #include <grpc/slice.h>
 #include <grpc/slice_buffer.h>
-#include <grpc/support/port_platform.h>
 #include "src/core/ext/transport/chttp2/transport/frame.h"
-#include "src/core/lib/iomgr/exec_ctx.h"
 
 typedef enum {
   GRPC_CHTTP2_GOAWAY_LSI0,
@@ -53,10 +53,11 @@ grpc_error* grpc_chttp2_goaway_parser_begin_frame(
 grpc_error* grpc_chttp2_goaway_parser_parse(void* parser,
                                             grpc_chttp2_transport* t,
                                             grpc_chttp2_stream* s,
-                                            grpc_slice slice, int is_last);
+                                            const grpc_slice& slice,
+                                            int is_last);
 
 void grpc_chttp2_goaway_append(uint32_t last_stream_id, uint32_t error_code,
-                               grpc_slice debug_data,
+                               const grpc_slice& debug_data,
                                grpc_slice_buffer* slice_buffer);
 
 #endif /* GRPC_CORE_EXT_TRANSPORT_CHTTP2_TRANSPORT_FRAME_GOAWAY_H */

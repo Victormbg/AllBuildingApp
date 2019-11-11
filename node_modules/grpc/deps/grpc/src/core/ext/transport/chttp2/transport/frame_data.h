@@ -21,10 +21,11 @@
 
 /* Parser for GRPC streams embedded in DATA frames */
 
+#include <grpc/support/port_platform.h>
+
 #include <grpc/slice.h>
 #include <grpc/slice_buffer.h>
 #include "src/core/ext/transport/chttp2/transport/frame.h"
-#include "src/core/lib/iomgr/exec_ctx.h"
 #include "src/core/lib/transport/byte_stream.h"
 #include "src/core/lib/transport/transport.h"
 
@@ -38,23 +39,22 @@ typedef enum {
   GRPC_CHTTP2_DATA_ERROR
 } grpc_chttp2_stream_state;
 
-typedef struct grpc_chttp2_incoming_byte_stream
-    grpc_chttp2_incoming_byte_stream;
+namespace grpc_core {
+class Chttp2IncomingByteStream;
+}  // namespace grpc_core
 
-typedef struct {
-  grpc_chttp2_stream_state state;
-  uint8_t frame_type;
-  uint32_t frame_size;
-  grpc_error* error;
+struct grpc_chttp2_data_parser {
+  grpc_chttp2_data_parser() = default;
+  ~grpc_chttp2_data_parser();
 
-  bool is_frame_compressed;
-  grpc_chttp2_incoming_byte_stream* parsing_frame;
-} grpc_chttp2_data_parser;
+  grpc_chttp2_stream_state state = GRPC_CHTTP2_DATA_FH_0;
+  uint8_t frame_type = 0;
+  uint32_t frame_size = 0;
+  grpc_error* error = GRPC_ERROR_NONE;
 
-/* initialize per-stream state for data frame parsing */
-grpc_error* grpc_chttp2_data_parser_init(grpc_chttp2_data_parser* parser);
-
-void grpc_chttp2_data_parser_destroy(grpc_chttp2_data_parser* parser);
+  bool is_frame_compressed = false;
+  grpc_core::Chttp2IncomingByteStream* parsing_frame = nullptr;
+};
 
 /* start processing a new data frame */
 grpc_error* grpc_chttp2_data_parser_begin_frame(grpc_chttp2_data_parser* parser,
@@ -67,7 +67,7 @@ grpc_error* grpc_chttp2_data_parser_begin_frame(grpc_chttp2_data_parser* parser,
 grpc_error* grpc_chttp2_data_parser_parse(void* parser,
                                           grpc_chttp2_transport* t,
                                           grpc_chttp2_stream* s,
-                                          grpc_slice slice, int is_last);
+                                          const grpc_slice& slice, int is_last);
 
 void grpc_chttp2_encode_data(uint32_t id, grpc_slice_buffer* inbuf,
                              uint32_t write_bytes, int is_eof,
@@ -77,6 +77,6 @@ void grpc_chttp2_encode_data(uint32_t id, grpc_slice_buffer* inbuf,
 grpc_error* grpc_deframe_unprocessed_incoming_frames(
     grpc_chttp2_data_parser* p, grpc_chttp2_stream* s,
     grpc_slice_buffer* slices, grpc_slice* slice_out,
-    grpc_byte_stream** stream_out);
+    grpc_core::OrphanablePtr<grpc_core::ByteStream>* stream_out);
 
 #endif /* GRPC_CORE_EXT_TRANSPORT_CHTTP2_TRANSPORT_FRAME_DATA_H */

@@ -25,7 +25,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#include <grpc/support/alloc.h>
 #include <grpc/support/cpu.h>
 #include <grpc/support/log.h>
 #include <grpc/support/sync.h>
@@ -37,7 +36,7 @@ static long ncpus = 0;
 static pthread_key_t thread_id_key;
 
 static void init_ncpus() {
-  ncpus = sysconf(_SC_NPROCESSORS_ONLN);
+  ncpus = sysconf(_SC_NPROCESSORS_CONF);
   if (ncpus < 1 || ncpus > INT32_MAX) {
     gpr_log(GPR_ERROR, "Cannot determine number of CPUs: assuming 1");
     ncpus = 1;
@@ -52,7 +51,7 @@ unsigned gpr_cpu_num_cores(void) {
 
 static void delete_thread_id(void* value) {
   if (value) {
-    gpr_free(value);
+    free(value);
   }
 }
 
@@ -71,7 +70,10 @@ unsigned gpr_cpu_current_cpu(void) {
   unsigned int* thread_id =
       static_cast<unsigned int*>(pthread_getspecific(thread_id_key));
   if (thread_id == nullptr) {
-    thread_id = static_cast<unsigned int*>(gpr_malloc(sizeof(unsigned int)));
+    // Note we cannot use gpr_malloc here because this allocation can happen in
+    // a main thread and will only be free'd when the main thread exits, which
+    // will cause our internal memory counters to believe it is a leak.
+    thread_id = static_cast<unsigned int*>(malloc(sizeof(unsigned int)));
     pthread_setspecific(thread_id_key, thread_id);
   }
 
