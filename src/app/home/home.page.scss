@@ -1,0 +1,68 @@
+ion-slides{
+
+
+
+    height: 100%;
+    .slide-inner{
+        width: 100%;
+        color:rgb(255, 255, 255);
+        background-color: green !important;
+        border-radius: 10px;
+    }
+    ion-list{
+        background-color: green !important;    
+    }
+    ion-item {
+        background-color: green !important;
+    }
+}
+
+ion-item{
+
+--background: 	hsl(0, 0%, 85%);
+--border-radius: 10px;
+}
+
+ion-input{
+
+--color: rgb(12, 12, 12);
+//--background: green !important;
+
+}
+ion-img{
+    height: 250px;
+}
+
+
+ion-content{
+    //--background: url('/assets/img/login.jpg') no-repeat 100% 100%;
+    --background: url('/assets/img/login.jpg') 0 0/100% 100% no-repeat;
+}
+
+
+/*
+
+ion-content{ 
+    background-image: url('/assets/img/login.jpg'); 
+    background-repeat: no-repeat; 
+    background-size:100%; 
+    bottom: 0; 
+    color: black; 
+    left: 0; 
+    overflow: auto; 
+    padding: 3em; 
+    position: absolute; 
+    right: 0; 
+    text-align: center; 
+    top: 0; 
+    background-size: cover; 
+}
+
+html { 
+    background: url('/assets/img/login.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+ }
+*/

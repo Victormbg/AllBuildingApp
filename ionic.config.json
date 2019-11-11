@@ -1,7 +1,5 @@
 {
   "name": "AllBuilding",
-  "integrations": {
-    "cordova": {}
-  },
+  "integrations": {},
   "type": "angular"
 }
