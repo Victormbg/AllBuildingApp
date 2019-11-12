@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { TabsPage } from "./tabs.page";
+import { AuthGuard } from '../guards/auth.guard';
+import { LoginGuard } from '../guards/login.guard';
 
 const routes: Routes = [
   {
@@ -58,7 +60,17 @@ const routes: Routes = [
     path: "",
     redirectTo: "/home",
     pathMatch: "full"
-  }
+  },
+    {
+    path: "home",
+    loadChildren: "../app/pages/home/home.module#HomePageModule",
+    canActivate: [LoginGuard]
+  },
+    {
+    path: "tabs/tab4",
+    loadChildren: "../app/pages/destaque/tab4.module#Tab4PageModule",
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
