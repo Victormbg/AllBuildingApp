@@ -1,0 +1,27 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Busca</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	    <ion-searchbar
+      placeholder="Pesquisar por anuncios"
+      (ionChange)="buscarAnuncio($event)"
+      showCancelButton="true"
+      (ionCancel)="isSearchbarOpened = false"
+    ></ion-searchbar>
+
+	<ion-list>
+		<ion-item *ngFor="let item of anuncios | filtro: textoBuscar" [routerLink]="['/tab5', item.id]">
+			<img src="../../assets/img.jpg" />
+			<ion-label text-wrap>
+				<p>
+					<ion-icon name="person"></ion-icon>{{item.titulo}}
+				</p>
+				<p>
+					<ion-icon name="briefcase"></ion-icon>{{item.especialidade}}
+				</p>
+			</ion-label>
+		</ion-item>
+	</ion-list>
+</ion-content>

@@ -1,29 +1,18 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-
-
-export interface Destaques {
-  descricao: string;
-  especialidade: string;
-  tel: number;
-  id: number;
-  titulo: string;
-}
+import { Injectable } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { Destaques } from "../services/intefaces/destaque";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class DestaqueService {
-  constructor(public firestore: AngularFirestore) { }
+  constructor(public firestore: AngularFirestore) {}
 
-
-  listar(){
-    console.log("teste2");
-    return this.firestore.collection('destaque').snapshotChanges();
+  listar() {
+    return this.firestore.collection("destaque").snapshotChanges();
   }
 
   getDestaque(id) {
-    return this.firestore.doc<Destaques>('destaque/' +id).valueChanges();
+    return this.firestore.doc<Destaques>("destaque/" + id).valueChanges();
   }
-
 }

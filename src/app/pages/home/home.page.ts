@@ -5,9 +5,10 @@ import {
   LoadingController,
   ToastController
 } from "@ionic/angular";
-import { User } from "../services/intefaces/user";
 import { registerLocaleData } from "@angular/common";
-import { AuthService } from "../services/auth.service";
+import { AuthService } from './../../services/auth.service';
+import { User } from '../../services/intefaces/user';
+
 
 @Component({
   selector: "app-home",

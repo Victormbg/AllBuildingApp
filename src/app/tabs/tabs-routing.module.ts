@@ -13,7 +13,7 @@ const routes: Routes = [
           {
             path: "",
             loadChildren: () =>
-              import("../tab1/tab1.module").then(m => m.Tab1PageModule)
+              import("../pages/busca/tab1.module").then(m => m.Tab1PageModule)
           }
         ]
       },
@@ -23,7 +23,7 @@ const routes: Routes = [
           {
             path: "",
             loadChildren: () =>
-              import("../tab2/tab2.module").then(m => m.Tab2PageModule)
+              import("../pages/perfil/tab2.module").then(m => m.Tab2PageModule)
           }
         ]
       },
@@ -33,7 +33,7 @@ const routes: Routes = [
           {
             path: "",
             loadChildren: () =>
-              import("../tab3/tab3.module").then(m => m.Tab3PageModule)
+              import("../pages/sobre/tab3.module").then(m => m.Tab3PageModule)
           }
         ]
       },
@@ -43,7 +43,7 @@ const routes: Routes = [
           {
             path: "",
             loadChildren: () =>
-              import("../tab4/tab4.module").then(m => m.Tab4PageModule)
+              import("../pages/destaque/tab4.module").then(m => m.Tab4PageModule)
           }
         ]
       },
