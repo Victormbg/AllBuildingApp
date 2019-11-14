@@ -30,6 +30,10 @@ ion-img {
   height: 250px;
 }
 
+.slide-inner ion-padding{
+    --background: url("../../../assets/img/imagem1212.png");
+}
+
 ion-content {
   //--background: url('/assets/img/login.jpg') no-repeat 100% 100%;
   --background: url("../../../assets/img/login.jpg") 0 0/100% 100% no-repeat;
