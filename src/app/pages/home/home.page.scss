@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap");
+
 ion-slides {
   height: 100%;
   .slide-inner {
@@ -22,6 +24,7 @@ ion-item {
 ion-input {
   --color: rgb(12, 12, 12);
   //--background: green !important;
+  font-family: "Open Sans", sans-serif;
 }
 ion-img {
   height: 250px;
@@ -30,8 +33,16 @@ ion-img {
 ion-content {
   //--background: url('/assets/img/login.jpg') no-repeat 100% 100%;
   --background: url("../../../assets/img/login.jpg") 0 0/100% 100% no-repeat;
+  font-family: "Open Sans", sans-serif;
 }
 
+ion-segment-button ion-label{
+    font-family: "Open Sans", sans-serif;
+}
+
+ion-button{
+    font-family: "Open Sans", sans-serif;
+}
 /*
 
 ion-content{ 
