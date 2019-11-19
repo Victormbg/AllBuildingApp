@@ -6,9 +6,8 @@ import {
   ToastController
 } from "@ionic/angular";
 import { registerLocaleData } from "@angular/common";
-import { AuthService } from './../../services/auth.service';
-import { User } from '../../services/intefaces/user';
-
+import { AuthService } from "./../../services/auth.service";
+import { User } from "../../services/intefaces/user";
 
 @Component({
   selector: "app-home",
@@ -21,8 +20,6 @@ export class HomePage implements OnInit {
   public userLogin: User = {};
   public userRegister: User = {};
   private loading: any;
-
-  //Verificar Diagrama//
 
   constructor(
     public navCtrl: NavController,
@@ -47,7 +44,19 @@ export class HomePage implements OnInit {
     try {
       await this.authService.login(this.userLogin);
     } catch (error) {
-      this.presentToast(error.message);
+      let message: string;
+
+      switch (error.code) {
+        case "auth/user-not-found":
+          message = "usuário não encontrado";
+          break;
+
+        case "auth/wrong-password":
+          message = "Senha incorreta";
+          break;
+      }
+
+      this.presentToast(message);
     } finally {
       this.loading.dismiss();
     }
@@ -64,6 +73,10 @@ export class HomePage implements OnInit {
       switch (error.code) {
         case "auth/email-already-in-use":
           message = "O endereço de E-mail já está registrado";
+          break;
+
+        case "auth/weak-password":
+          message = "A senha está muito fraca";
           break;
 
         case "auth/invalid-email":
