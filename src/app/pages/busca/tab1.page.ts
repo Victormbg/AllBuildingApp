@@ -11,6 +11,7 @@ export class Tab1Page {
   descricao: string;
   especialidade: string;
   tel: number;
+  imagem:string;
   titulo: string;
   anuncios: any;
   textoBuscar = '';
@@ -26,7 +27,8 @@ export class Tab1Page {
           descricao: e.payload.doc.data()["descricao"],
           especialidade: e.payload.doc.data()["especialidade"],
           tel: e.payload.doc.data()["tel"],
-          titulo: e.payload.doc.data()["titulo"]
+          titulo: e.payload.doc.data()["titulo"],
+          imagem: e.payload.doc.data()["imagem"]
         };
       });
       console.log(this.anuncios);
