@@ -13,6 +13,7 @@ export class Tab5Page implements OnInit {
   especialidade: string;
   tel: number;
   titulo: string;
+  imagem:string;
   id = null;
   produtos: {};
 

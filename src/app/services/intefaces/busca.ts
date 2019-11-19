@@ -4,4 +4,5 @@ export interface Buscas {
   tel: number;
   id: number;
   titulo: string;
+  imagem: string;
 }

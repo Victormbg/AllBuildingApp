@@ -4,4 +4,5 @@ export interface Destaques {
   tel: number;
   id: number;
   titulo: string;
+  imagem: string;
 }
