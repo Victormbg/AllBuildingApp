@@ -21,7 +21,9 @@ const routes: Routes = [
     path: "home",
     loadChildren: "../app/pages/home/home.module#HomePageModule",
     canActivate: [LoginGuard]
-  }
+  },
+  { path: 'edicao', loadChildren: './pages/edicao/edicao.module#EdicaoPageModule' },
+  { path: 'pagina-destaque', loadChildren: './pages/pagina-destaque/pagina-destaque.module#PaginaDestaquePageModule' }
 ];
 
 @NgModule({
