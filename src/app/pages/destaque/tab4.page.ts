@@ -15,6 +15,7 @@ export class Tab4Page implements OnInit {
   tel: number;
   titulo: string;
   anuncios: any;
+  imagem: string;
 
   constructor(private DesSer: DestaqueService,private afa: AngularFireAuth, 
     public firestore: AngularFirestore) {}
@@ -28,7 +29,8 @@ export class Tab4Page implements OnInit {
           descricao: e.payload.doc.data()["descricao"],
           especialidade: e.payload.doc.data()["especialidade"],
           tel: e.payload.doc.data()["tel"],
-          titulo: e.payload.doc.data()["titulo"]
+          titulo: e.payload.doc.data()["titulo"],
+          imagem: e.payload.doc.data()["imagem"]
         };
       });
       console.log(this.anuncios);

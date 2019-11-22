@@ -11,7 +11,7 @@
 <ion-content>
 	<ion-list>
 		<ion-item *ngFor="let item of anuncios" [routerLink]="['/pagina-destaque', item.id]">
-			<img src="../../assets/img.jpg" />
+			<img src="{{item.imagem}}" />
 			<ion-label text-wrap>
 				<p>
 					<ion-icon name="person"></ion-icon>{{item.titulo}}
