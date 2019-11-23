@@ -1,8 +1,7 @@
-import { DestaqueService } from "./../../../../AllBuilding/src/app/services/destaque.service";
 import { Component, OnInit, NgModule } from "@angular/core";
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
-
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { DestaqueService } from './../../services/destaque.service';
 @Component({
   selector: "app-tab4",
   templateUrl: "./tab4.page.html",
@@ -17,8 +16,11 @@ export class Tab4Page implements OnInit {
   anuncios: any;
   imagem: string;
 
-  constructor(private DesSer: DestaqueService,private afa: AngularFireAuth, 
-    public firestore: AngularFirestore) {}
+  constructor(
+    private DesSer: DestaqueService,
+    private afa: AngularFireAuth,
+    public firestore: AngularFirestore
+  ) {}
 
   ngOnInit() {
     this.DesSer.listar().subscribe(data => {
@@ -36,7 +38,7 @@ export class Tab4Page implements OnInit {
       console.log(this.anuncios);
     });
   }
-    logout() {
+  logout() {
     this.afa.auth.signOut();
   }
 }

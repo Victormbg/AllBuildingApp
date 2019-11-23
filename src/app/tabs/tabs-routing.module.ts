@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { TabsPage } from "./tabs.page";
-import { AuthGuard } from '../guards/auth.guard';
-import { LoginGuard } from '../guards/login.guard';
+import { AuthGuard } from "../guards/auth.guard";
+import { LoginGuard } from "../guards/login.guard";
 
 const routes: Routes = [
   {
@@ -45,7 +45,9 @@ const routes: Routes = [
           {
             path: "",
             loadChildren: () =>
-              import("../pages/destaque/tab4.module").then(m => m.Tab4PageModule)
+              import("../pages/destaque/tab4.module").then(
+                m => m.Tab4PageModule
+              )
           }
         ]
       },
@@ -61,16 +63,21 @@ const routes: Routes = [
     redirectTo: "/home",
     pathMatch: "full"
   },
-    {
+  {
     path: "home",
     loadChildren: "../app/pages/home/home.module#HomePageModule",
     canActivate: [LoginGuard]
   },
-    {
+  {
+    path: "pagina-destaque/:id",
+    loadChildren:
+      "./pages/pagina-destaque/pagina-destaque.module#PaginaDestaquePageModule"
+  },
+  {
     path: "tabs/tab4",
     loadChildren: "../app/pages/destaque/tab4.module#Tab4PageModule",
     canActivate: [AuthGuard]
-  },
+  }
 ];
 
 @NgModule({

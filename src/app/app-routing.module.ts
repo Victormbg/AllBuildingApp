@@ -14,16 +14,23 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "tab5/:id",
-    loadChildren: "../app/pages/pagina-anuncio/tab5.module#Tab5PageModule"
-  },
-  {
     path: "home",
     loadChildren: "../app/pages/home/home.module#HomePageModule",
     canActivate: [LoginGuard]
   },
-  { path: 'edicao', loadChildren: './pages/edicao/edicao.module#EdicaoPageModule' },
-  { path: 'pagina-destaque', loadChildren: './pages/pagina-destaque/pagina-destaque.module#PaginaDestaquePageModule' }
+  {
+    path: "edicao",
+    loadChildren: "./pages/edicao/edicao.module#EdicaoPageModule"
+  },
+  {
+    path: "tab5/:id",
+    loadChildren: "../app/pages/pagina-anuncio/tab5.module#Tab5PageModule"
+  },
+  {
+    path: "pagina-destaque/:id",
+    loadChildren:
+      "./pages/pagina-destaque/pagina-destaque.module#PaginaDestaquePageModule"
+  }
 ];
 
 @NgModule({

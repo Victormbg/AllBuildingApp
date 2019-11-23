@@ -11,7 +11,7 @@ export class Tab1Page {
   descricao: string;
   especialidade: string;
   tel: number;
-  imagem:string;
+  imagem: string;
   titulo: string;
   anuncios: any;
   textoBuscar = '';
