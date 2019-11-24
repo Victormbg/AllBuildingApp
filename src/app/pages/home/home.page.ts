@@ -1,10 +1,5 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
-import {
-  NavController,
-  IonSlides,
-  LoadingController,
-  ToastController
-} from "@ionic/angular";
+import {NavController,IonSlides,LoadingController,ToastController} from "@ionic/angular";
 import { registerLocaleData } from "@angular/common";
 import { AuthService } from "./../../services/auth.service";
 import { User } from "../../services/intefaces/user";
@@ -21,93 +16,106 @@ export class HomePage implements OnInit {
   public userRegister: User = {};
   private loading: any;
 
-  constructor(
-    public navCtrl: NavController,
-    public loadingCtrl: LoadingController,
-    private toastCtrl: ToastController,
-    private authService: AuthService
-  ) {}
+ constructor(
+ public navCtrl: NavController,
+ public loadingCtrl: LoadingController,
+ private toastCtrl: ToastController,
+ private authService: AuthService
+) {}
 
   ngOnInit() {}
 
-  segmentChanged(event: any) {
-    if (event.detail.value === "login") {
-      this.slides.slidePrev();
-    } else {
-      this.slides.slideNext();
-    }
-  }
+// Alteração de Slides
+segmentChanged(event: any) {
 
-  async login() {
-    await this.presentLoading();
+if (event.detail.value === "login") {
+this.slides.slidePrev();
 
-    try {
-      await this.authService.login(this.userLogin);
-    } catch (error) {
-      let message: string;
+} else {
+this.slides.slideNext();
+}
+}
 
-      switch (error.code) {
-        case "auth/user-not-found":
-          message = "usuário não encontrado";
-          break;
+// Método de Autenticação 
+async login() {
+await this.presentLoading();
 
-        case "auth/wrong-password":
-          message = "Senha incorreta";
-          break;
-      }
+try {
+await this.authService.login(this.userLogin);}
+catch (error) {
+let message: string;
 
-      this.presentToast(message);
-    } finally {
-      this.loading.dismiss();
-    }
-  }
+// Tratamento de erros
+switch (error.code) {
+case "auth/user-not-found":
+message = "Usuário não encontrado";
+break;
 
-  async register() {
-    await this.presentLoading();
+case "auth/wrong-password":
+message = "Senha incorreta";
+break;
+}
 
-    try {
-      await this.authService.register(this.userRegister);
-    } catch (error) {
-      let message: string;
+this.presentToast(message);
+} finally {
+this.loading.dismiss();
+}
+}
 
-      switch (error.code) {
-        case "auth/email-already-in-use":
-          message = "O endereço de E-mail já está registrado";
-          break;
+// Método de Registro
+async register() {
+await this.presentLoading();
 
-        case "auth/weak-password":
-          message = "A senha está muito fraca";
-          break;
+try {
+await this.authService.register(this.userRegister);}
 
-        case "auth/invalid-email":
-          message = "E-mail inválido";
-          break;
-      }
+//Tratamento de Erros 
+catch (error) {
+let message: string;
+switch (error.code) 
+{
+case "auth/email-already-in-use":
+message = "O endereço de E-mail já está registrado";
+break;
 
-      let record = {};
+case "auth/weak-password":
+message = "A senha está muito fraca";
+break;
 
-      this.authService.criar(record).then(resp => {});
+case "auth/invalid-email":
+message = "E-mail inválido";
+break;
+}
 
-      this.presentToast(message);
-    } finally {
-      this.loading.dismiss();
-    }
+let record = {};
 
-    this.loading.dismiss();
-  }
+this.authService.criar(record).then(resp => {});
 
-  async presentLoading() {
-    this.loading = await this.loadingCtrl.create({
-      message: "Por favor, aguarde"
-    });
-    return this.loading.present();
-  }
+this.presentToast(message);
+} finally {
+this.loading.dismiss();
+}
 
-  async presentToast(message: string) {
-    const toast = await this.toastCtrl.create({
-      message,
-      duration: 2000
-    });
-    toast.present();
-  }
+this.loading.dismiss();
+}
+
+//Carregamento
+async presentLoading() {
+this.loading = await this.loadingCtrl.create({
+message: "Por favor, aguarde"
+});
+
+
+return this.loading.present();
+}
+
+ 
+async presentToast(message: string) {
+const toast = await this.toastCtrl.create({
+message,
+duration: 2000
+});
+
+toast.present();
+}
 }
