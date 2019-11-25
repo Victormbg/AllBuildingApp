@@ -26,6 +26,10 @@ const routes: Routes = [
     path: "tab5/:id",
     loadChildren: "../app/pages/pagina-anuncio/tab5.module#Tab5PageModule"
   },
+    {
+    path: "tab2/:userLogin",
+    loadChildren: "../app/pages/pagina-anuncio/tab2.module#Tab2PageModule"
+  },
   {
     path: "pagina-destaque/:id",
     loadChildren:

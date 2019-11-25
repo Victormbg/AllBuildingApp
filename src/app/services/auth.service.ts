@@ -7,6 +7,8 @@ import { AngularFirestore } from "@angular/fire/firestore";
   providedIn: "root"
 })
 export class AuthService {
+    public userLogado: string;
+
   constructor(
     private afa: AngularFireAuth,
     public firestore: AngularFirestore
@@ -29,5 +31,9 @@ export class AuthService {
 
   criar(record) {
     return this.firestore.collection("usuarios").add(record);
+  }
+
+  setUsuario(email){
+    this.userLogado = email;
   }
 }
