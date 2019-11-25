@@ -6,9 +6,11 @@
 <ion-content>
 	<img src="../../assets/icon2.png" />
 	<h1>Nome do usuario</h1>
-	<ion-card [routerLink]="['/edicao']">
+	<ion-card >
 		<ion-card-header>
-			<ion-card-title>Meus anuncios</ion-card-title>
+			<ion-card-title>Meus anuncios
+				<ion-icon name="create" [routerLink]="['/edicao']"></ion-icon>
+			</ion-card-title>
 		</ion-card-header>
 		<ion-card-content>
 			<label>Pedreiro</label>
