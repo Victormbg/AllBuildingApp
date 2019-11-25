@@ -1,4 +1,8 @@
+
+// Importação da fonte 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap");
+
+// Barras
 ion-tab-bar {
   --background: #36ef26;
 }
@@ -7,14 +11,17 @@ ion-tab-bar {
   color: white;
 }
 
+
+// Rótulo tabs
 ion-label {
   font-family: "Open Sans", sans-serif;
   font-size: 15px;
   margin: 0px 0px 0px;
 }
 
-ion-icon,
-ion-tab-button {
-  color: white;
+// Cores botão selecionado/não selecionado 
+ion-icon,ion-tab-button {
+--color-selected: rgb(212, 212, 14);
+--color: rgb(255,255,255);
   font-size: 25px;
 }
