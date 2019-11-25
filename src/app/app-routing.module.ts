@@ -29,7 +29,7 @@ const routes: Routes = [
   {
     path: "pagina-destaque/:id",
     loadChildren:
-      "./pages/pagina-destaque/pagina-destaque.module#PaginaDestaquePageModule"
+      "../app/pages/pagina-destaque/pagina-destaque.module#PaginaDestaquePageModule"
   }
 ];
 

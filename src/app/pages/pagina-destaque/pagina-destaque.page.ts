@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NavController, LoadingController } from "@ionic/angular";
-import { BuscaService } from "../../services/busca.service";
+import { DestaqueService } from './../../services/destaque.service';
 
 @Component({
   selector: "app-pagina-destaque",
@@ -20,13 +20,13 @@ export class PaginaDestaquePage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private nav: NavController,
-    private AnuSer: BuscaService
+    private DesSer: DestaqueService
   ) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
 
-    this.AnuSer.getAnuncio(this.id).subscribe(res => {
+    this.DesSer.getDestaque(this.id).subscribe(res => {
       this.produtos = res;
       console.log(this.produtos);
     });
