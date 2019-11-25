@@ -15,7 +15,8 @@ export class HomePage implements OnInit {
   public userLogin: User = {};
   public userRegister: User = {};
   private loading: any;
-
+  //public userLogado: string;  
+  
  constructor(
  public navCtrl: NavController,
  public loadingCtrl: LoadingController,
@@ -41,7 +42,11 @@ async login() {
 await this.presentLoading();
 
 try {
-await this.authService.login(this.userLogin);}
+await this.authService.login(this.userLogin);
+  console.log(this.userLogin);
+  this.authService.setUsuario(this.userLogin.email);
+ 
+}
 catch (error) {
 let message: string;
 
