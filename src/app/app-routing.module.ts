@@ -24,11 +24,11 @@ const routes: Routes = [
   },
   {
     path: "tab5/:id",
-    loadChildren: "../app/pages/perfil/tab2.module#Tab2PageModule"
+    loadChildren: "../app/pages/pagina-anuncio/tab5.module#Tab5PageModule"
   },
     {
     path: "tab2/:userLogado",
-    loadChildren: "../app/pages/pagina-anuncio/tab2.module#Tab2PageModule"
+    loadChildren: "../app/pages/perfil/tab2.module#Tab2PageModule"
   },
   {
     path: "pagina-destaque/:id",
