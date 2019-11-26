@@ -1,18 +1,29 @@
 <ion-header>
-	<ion-toolbar>
-		<ion-buttons slot="start">
-			<ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
-		</ion-buttons>
-		<ion-title>Anuncio</ion-title>
-	</ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Anuncio</ion-title>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
-	<ion-list>
-		<ion-item>
-			<img src="{{ produtos?.imagem }}" /></ion-item>
-			<ion-item>Titulo: {{ produtos?.titulo }}</ion-item>
-			<ion-item>Descriçao: {{ produtos?.descricao }}</ion-item>
-			<ion-item>Especialidade: {{ produtos?.especialidade }}</ion-item>
-			<ion-item>Telefone: {{ produtos?.tel }}</ion-item>
-	</ion-list>
+  <ion-list>
+    <ion-item> <img src="{{ anuncios?.imagem }}"/></ion-item>
+    <ion-item
+      ><p>Titulo:</p>
+      {{ anuncios?.titulo }}</ion-item
+    >
+    <ion-item
+      ><p>Descriçao:</p>
+      {{ anuncios?.descricao }}</ion-item
+    >
+    <ion-item
+      ><p>Especialidade:</p>
+      {{ anuncios?.especialidade }}</ion-item
+    >
+    <ion-item
+      ><p>Telefone:</p>
+      {{ anuncios?.tel }}</ion-item
+    >
+  </ion-list>
 </ion-content>

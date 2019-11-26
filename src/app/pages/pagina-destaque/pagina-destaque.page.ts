@@ -1,7 +1,9 @@
+// IMPORTAÇÔES
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NavController, LoadingController } from "@ionic/angular";
-import { DestaqueService } from './../../services/destaque.service';
+// IMPORTAÇÂO DO SERVICE DESTAQUE
+import { DestaqueService } from "./../../services/destaque.service";
 
 @Component({
   selector: "app-pagina-destaque",
@@ -9,14 +11,15 @@ import { DestaqueService } from './../../services/destaque.service';
   styleUrls: ["./pagina-destaque.page.scss"]
 })
 export class PaginaDestaquePage implements OnInit {
+  // DECLARAÇÂO DA VARIAVEIS
   descricao: string;
   especialidade: string;
   tel: number;
   titulo: string;
   imagem: string;
   id = null;
-  produtos: {};
-
+  destaques: {};
+  // CHAMADA DOS IMPORTAÇÔES E CRIA VARIAVEL PARA ELAS
   constructor(
     private route: ActivatedRoute,
     private nav: NavController,
@@ -24,11 +27,12 @@ export class PaginaDestaquePage implements OnInit {
   ) {}
 
   ngOnInit() {
+    //RECEBER O ID DO DESTAQUE
     this.id = this.route.snapshot.params["id"];
-
+    // USO DO METODO GETDESTAQUE PARA ARMAZENAR AS INFORMAÇÔES EM DESTAQUES
     this.DesSer.getDestaque(this.id).subscribe(res => {
-      this.produtos = res;
-      console.log(this.produtos);
+      this.destaques = res;
+      console.log(this.destaques);
     });
   }
 }

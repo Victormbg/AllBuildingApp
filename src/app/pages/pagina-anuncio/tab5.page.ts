@@ -1,6 +1,8 @@
+// IMPORTAÇÂO
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NavController, LoadingController } from "@ionic/angular";
+// IMPORTAÇÂO DO SERVICE BUSCA
 import { BuscaService } from "../../services/busca.service";
 
 @Component({
@@ -9,14 +11,15 @@ import { BuscaService } from "../../services/busca.service";
   styleUrls: ["./tab5.page.scss"]
 })
 export class Tab5Page implements OnInit {
+  // DECLARAÇÂO DA VARIAVEIS
   descricao: string;
   especialidade: string;
   tel: number;
   titulo: string;
-  imagem:string;
+  imagem: string;
   id = null;
-  produtos: {};
-
+  anuncios: {};
+  // CHAMADA DOS IMPORTAÇÔES E CRIA VARIAVEL PARA ELAS
   constructor(
     private route: ActivatedRoute,
     private nav: NavController,
@@ -24,11 +27,12 @@ export class Tab5Page implements OnInit {
   ) {}
 
   ngOnInit() {
+    //RECEBE O ID DA BUSCA
     this.id = this.route.snapshot.params["id"];
-
+    // USO DO METODO GETANUNCIO PARA ARMAZENAR AS INFORMAÇÔES EM ANUNCIOS
     this.AnuSer.getAnuncio(this.id).subscribe(res => {
-      this.produtos = res;
-      console.log(this.produtos);
+      this.anuncios = res;
+      console.log(this.anuncios);
     });
   }
 }
