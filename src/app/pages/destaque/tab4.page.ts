@@ -1,7 +1,8 @@
 import { Component, OnInit, NgModule } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { DestaqueService } from './../../services/destaque.service';
+import { DestaqueService } from "./../../services/destaque.service";
+import { ActivatedRoute, Router } from "@angular/router";
 @Component({
   selector: "app-tab4",
   templateUrl: "./tab4.page.html",
@@ -19,6 +20,8 @@ export class Tab4Page implements OnInit {
   constructor(
     private DesSer: DestaqueService,
     private afa: AngularFireAuth,
+    private route: ActivatedRoute,
+    private router: Router,
     public firestore: AngularFirestore
   ) {}
 
@@ -39,6 +42,8 @@ export class Tab4Page implements OnInit {
     });
   }
   logout() {
-    this.afa.auth.signOut();
+    return this.afa.auth.signOut().then(() => {
+      this.router.navigate(["home"]);
+    });
   }
 }

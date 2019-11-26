@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "./../../services/auth.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { NavController, LoadingController } from "@ionic/angular";
 import { PerfilService } from "../../services/perfil.service";
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: "app-tab2",
@@ -17,18 +18,25 @@ export class Tab2Page {
   constructor(
     public auth: AuthService,
     private route: ActivatedRoute,
+    private afa: AngularFireAuth,
+    private router: Router,
     private nav: NavController,
-    private PerSer: PerfilService,
+    private PerSer: PerfilService
   ) {}
 
   ngOnInit() {
     console.log(this.auth.userLogado);
-    
+
     this.userLogin = this.route.snapshot.params["userLogin"];
 
     this.PerSer.getPerfil(this.userLogin).subscribe(res => {
       this.perfis = res;
       console.log(this.perfis);
+    });
+  }
+  logout() {
+    return this.afa.auth.signOut().then(() => {
+      this.router.navigate(["home"]);
     });
   }
 }
