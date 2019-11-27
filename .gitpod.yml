@@ -31,6 +31,6 @@ ports:
 tasks:
   - init: npm install -g ionic
     command: npm install -g npm
-  - command: npm install -g cordova
-  - command: npm install
-  - command: ionic serve -- --disableHostCheck
+    command: npm install -g cordova
+    command: npm install
+    command: ionic serve -- --disableHostCheck
