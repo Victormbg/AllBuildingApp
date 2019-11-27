@@ -21,3 +21,9 @@ vscode:
     - axosoft.gitkraken-glo@1.1.0:mYsqLejysyS918uPBrpT/A==
     - esbenp.prettier-vscode@2.3.0:1F0Pvb/ORZ/T+b60LIMs8w==
     - Ho-Wan.vscode-trello-viewer@0.6.0:4O5ih9+TE/CmbpAFbw4iyg==
+
+tasks:
+  - init: npm install -g ionic
+    command: npm install -g cordova
+    command: npm install - g npm
+    command: npm install 

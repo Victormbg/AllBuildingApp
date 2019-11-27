@@ -1,25 +1,24 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Perfil</ion-title>
-    <ion-buttons slot="secondary">
-      <ion-button (click)="logout()">
-        <ion-icon slot="icon-only" name="power"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>Perfil</ion-title>
+		<ion-buttons slot="secondary">
+			<ion-button (click)="logout()">
+				<ion-icon slot="icon-only" name="power"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
 </ion-header>
 <ion-content>
-  <img src="../../assets/icon2.png" />
-  <h1>{{ perfis?.nome }}</h1>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title
-        >Meus anuncios
-        <ion-icon name="create" [routerLink]="['/edicao']"></ion-icon>
-      </ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <label>Pedreiro</label>
-    </ion-card-content>
-  </ion-card>
+	<img src="../../assets/icon2.png" />
+	<h1>{{ perfis?.nome }}</h1>
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>Meus anuncios
+				<ion-icon name="create" [routerLink]="['/edicao']"></ion-icon>
+			</ion-card-title>
+		</ion-card-header>
+		<ion-card-content>
+			<label>Pedreiro</label>
+		</ion-card-content>
+	</ion-card>
 </ion-content>
