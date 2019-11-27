@@ -22,8 +22,12 @@ vscode:
     - esbenp.prettier-vscode@2.3.0:1F0Pvb/ORZ/T+b60LIMs8w==
     - Ho-Wan.vscode-trello-viewer@0.6.0:4O5ih9+TE/CmbpAFbw4iyg==
 
+ports:
+  - port: 8100
+    onOpen: open-preview
+  - port: 9000-9999
+    onOpen: ignore
+
 tasks:
   - init: npm install -g ionic
-    command: npm install -g cordova
-    command: npm install - g npm
-    command: npm install 
+    command: ionic serve
