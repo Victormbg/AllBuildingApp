@@ -9,6 +9,10 @@ export class PerfilService {
 
   constructor(public firestore: AngularFirestore) { }
 
+  criar(record) {
+    return this.firestore.collection("usuario").add(record);
+  }
+
   getPerfil(userLogin) {
     return this.firestore.doc<Perfil>("usuario/" + userLogin).valueChanges();
   }

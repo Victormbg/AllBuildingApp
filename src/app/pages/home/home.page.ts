@@ -3,6 +3,7 @@ import {NavController,IonSlides,LoadingController,ToastController} from "@ionic/
 import { registerLocaleData } from "@angular/common";
 import { AuthService } from "./../../services/auth.service";
 import { User } from "../../services/intefaces/user";
+import { PerfilService } from "../../services/perfil.service";
 
 @Component({
   selector: "app-home",
@@ -21,7 +22,8 @@ export class HomePage implements OnInit {
  public navCtrl: NavController,
  public loadingCtrl: LoadingController,
  private toastCtrl: ToastController,
- private authService: AuthService
+ private authService: AuthService,
+ private perService: PerfilService
 ) {}
 
   ngOnInit() {}
@@ -43,8 +45,8 @@ await this.presentLoading();
 
 try {
 await this.authService.login(this.userLogin);
-  console.log(this.userLogin);
-  this.authService.setUsuario(this.userLogin.email);
+  console.log( this.userLogin.email);
+  this.authService.setUsuario( this.userLogin.email);
  
 }
 catch (error) {
@@ -72,7 +74,14 @@ async register() {
 await this.presentLoading();
 
 try {
-await this.authService.register(this.userRegister);}
+await this.authService.register(this.userRegister);
+
+ let perfil = {
+   cpf: '123',
+   nome: 'Teste'
+ };
+ this.perService.criar(perfil);
+}
 
 //Tratamento de Erros 
 catch (error) {
