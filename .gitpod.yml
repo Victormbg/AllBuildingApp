@@ -29,8 +29,6 @@ ports:
     onOpen: ignore
 
 tasks:
-  - init: npm install -g ionic
-    command: npm install -g npm
-    command: npm install -g cordova
-    command: npm install
+  - before: npm install -g ionic
+    init: npm install
     command: ionic serve -- --disableHostCheck
