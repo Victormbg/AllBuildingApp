@@ -16,7 +16,12 @@ import {
   AngularFirestoreModule,
   AngularFirestore
 } from "@angular/fire/firestore";
-
+import {
+  AngularFireStorageModule,
+  AngularFireStorage
+} from "@angular/fire/storage";
+import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
+import { File } from "@ionic-native/file/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +37,10 @@ import {
     AngularFirestore,
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Camera,
+    File,
+    AngularFireStorage
   ],
   bootstrap: [AppComponent]
 })
