@@ -1,18 +1,22 @@
+// Importações
 import { AuthGuard } from "./guards/auth.guard";
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { LoginGuard } from "./guards/login.guard";
 
+// Caminhos
 const routes: Routes = [
   {
     path: "",
     loadChildren: () => import("./tabs/tabs.module").then(m => m.TabsPageModule)
   },
+//   Caminho Destaque caso haja usuário
   {
     path: "tab4",
     loadChildren: "../app/pages/destaque/tab4.module#Tab4PageModule",
     canActivate: [AuthGuard]
   },
+//   Caminho Login caso não haja usuário
   {
     path: "home",
     loadChildren: "../app/pages/home/home.module#HomePageModule",
