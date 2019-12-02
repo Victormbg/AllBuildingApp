@@ -42,8 +42,9 @@
 
 <!--Botão Entrar-->
 <ion-button class=ion-margin-top color=secondary expand="full" (click)="login()" >Entrar</ion-button>
+
 <!--Botão redefinir senha-->
-<ion-button  class=ion-magin-top color=warning> Esqueceu sua senha ? </ion-button>
+<ion-button  class=ion-magin-top color=warning (click)="recSenha()"> Esqueci minha senha </ion-button>
 </div>			
 </ion-slide>
 
@@ -63,18 +64,10 @@
 <ion-input placeholder="Senha" type="password" [(ngModel)]="userRegister.password">
 </ion-input>
 </ion-item>
-
-<!--Campo nome Cadastro-->
-
-<!--<ion-item class=ion-margin-top lines="none">
-<ion-input placeholder="Nome" type="text" [(ngModel)]="nome">
-</ion-input>-->
-
 </ion-list>
 
 <!--Botão Cadastrar-->
 <ion-button class=ion-margin-top color=danger expand="full" (click)="register()">Cadastrar</ion-button>
-
 </div>
 
 

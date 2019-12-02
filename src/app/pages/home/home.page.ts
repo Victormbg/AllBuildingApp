@@ -1,22 +1,26 @@
+// Importações
 import { Component, ViewChild, OnInit } from "@angular/core";
 import {NavController,IonSlides,LoadingController,ToastController} from "@ionic/angular";
 import { registerLocaleData } from "@angular/common";
 import { AuthService } from "./../../services/auth.service";
 import { User } from "../../services/intefaces/user";
 import { PerfilService } from "../../services/perfil.service";
+import * as firebase from 'firebase';
+
 
 @Component({
-  selector: "app-home",
-  templateUrl: "home.page.html",
-  styleUrls: ["home.page.scss"]
+selector: "app-home",
+templateUrl: "home.page.html",
+styleUrls: ["home.page.scss"]
 })
 export class HomePage implements OnInit {
-  @ViewChild(IonSlides, { static: true }) slides: IonSlides;
+@ViewChild(IonSlides, { static: true }) slides: IonSlides;
 
-  public userLogin: User = {};
-  public userRegister: User = {};
-  private loading: any;
-  //public userLogado: string;  
+public userLogin: User = {};
+public userRegister: User = {};
+private loading: any;
+
+//public userLogado: string;  
   
  constructor(
  public navCtrl: NavController,
@@ -26,7 +30,8 @@ export class HomePage implements OnInit {
  private perService: PerfilService
 ) {}
 
-  ngOnInit() {}
+
+ngOnInit() {}
 
 // Alteração de Slides
 segmentChanged(event: any) {
@@ -45,9 +50,8 @@ await this.presentLoading();
 
 try {
 await this.authService.login(this.userLogin);
-  console.log( this.userLogin.email);
-  this.authService.setUsuario( this.userLogin.email);
- 
+console.log( this.userLogin.email);
+this.authService.setUsuario( this.userLogin.email);
 }
 catch (error) {
 let message: string;
@@ -67,6 +71,15 @@ this.presentToast(message);
 } finally {
 this.loading.dismiss();
 }
+}
+
+
+// Método de recuperação de senha 
+async recSenha(){
+var auth = firebase.auth();
+auth.sendPasswordResetEmail(this.userLogin.email).then(function() {
+}).catch(function(error) {
+});
 }
 
 // Método de Registro
