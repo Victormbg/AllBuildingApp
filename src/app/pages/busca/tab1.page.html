@@ -4,17 +4,13 @@
 	</ion-toolbar>
 </ion-header>
 <ion-content>
-	    <ion-searchbar
-      placeholder="Pesquisar por anuncios"
-      (ionChange)="buscarAnuncio($event)"
-      showCancelButton="true"
-      (ionCancel)="isSearchbarOpened = false"
-    ></ion-searchbar>
+	<ion-searchbar placeholder="Pesquisar por anuncios" (ionChange)="buscarAnuncio($event)" showCancelButton="true"
+		(ionCancel)="isSearchbarOpened = false"></ion-searchbar>
 
 	<ion-list>
 		<ion-item *ngFor="let item of anuncios | filtro: textoBuscar" [routerLink]="['/tab5', item.id]">
 			<img src="{{item.imagem}}" />
-			<ion-label text-wrap>
+			<ion-label  class="ion-text-wrap">
 				<p>
 					<ion-icon name="person"></ion-icon>{{item.titulo}}
 				</p>

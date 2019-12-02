@@ -14,7 +14,7 @@ export class Tab1Page {
   imagem: string;
   titulo: string;
   anuncios: any;
-  textoBuscar = '';
+  textoBuscar = "";
 
   constructor(private BusSer: BuscaService) {}
 
@@ -35,7 +35,7 @@ export class Tab1Page {
     });
   }
 
-   buscarAnuncio( event ) {
+  buscarAnuncio(event) {
     const texto = event.target.value;
     this.textoBuscar = texto;
   }

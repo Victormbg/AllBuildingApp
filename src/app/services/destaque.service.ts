@@ -13,7 +13,6 @@ export class DestaqueService {
   }
 
   getDestaque(id) {
-    console.log(id);
     return this.firestore.doc<Destaques>("destaque/" + id).valueChanges();
   }
 
