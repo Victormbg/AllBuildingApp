@@ -38,7 +38,9 @@ const routes: Routes = [
     path: "pagina-destaque/:id",
     loadChildren:
       "../app/pages/pagina-destaque/pagina-destaque.module#PaginaDestaquePageModule"
-  }
+  },
+  { path: 'redefinir', loadChildren: './pages/home/redefinir/redefinir.module#RedefinirPageModule' },
+
 ];
 
 @NgModule({

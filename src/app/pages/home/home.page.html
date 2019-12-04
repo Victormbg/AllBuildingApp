@@ -31,21 +31,20 @@
 <!--Campo Email Login-->
 <ion-list>
 <ion-item class=ion-margin-top lines="none">
-<ion-input placeholder="E-mail" type="email" [(ngModel)]="userLogin.email"></ion-input>
+<ion-input placeholder="E-mail" type="email" required [(ngModel)]="userLogin.email"></ion-input>
 </ion-item>
 
 <!--Campo Senha Login-->
 <ion-item class=ion-margin-top lines="none">
-<ion-input placeholder="Senha" type="password" [(ngModel)]="userLogin.password"></ion-input>
+<ion-input placeholder="Senha" type="password" required [(ngModel)]="userLogin.password"></ion-input>
 </ion-item>
 </ion-list>
 
 <!--Botão Entrar-->
 <ion-button class=ion-margin-top color=secondary expand="full" (click)="login()" >Entrar</ion-button>
+<ion-button  color=primary (click)="paginaRedefinir()">Esqueci minha senha</ion-button>
 
-<!--Botão redefinir senha-->
-<ion-button  class=ion-magin-top color=warning (click)="recSenha()"> Esqueci minha senha </ion-button>
-</div>			
+</div>
 </ion-slide>
 
 <!--Slide Cadastro-->

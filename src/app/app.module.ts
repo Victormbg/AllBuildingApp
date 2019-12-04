@@ -22,9 +22,10 @@ import {
 } from "@angular/fire/storage";
 import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 import { File } from "@ionic-native/file/ngx";
+import { RedefiirPipe } from './redefiir.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, RedefiirPipe],
   entryComponents: [],
   imports: [
     BrowserModule,

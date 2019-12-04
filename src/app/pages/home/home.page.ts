@@ -1,10 +1,11 @@
 // Importações
 import { Component, ViewChild, OnInit } from "@angular/core";
-import {NavController,IonSlides,LoadingController,ToastController} from "@ionic/angular";
+import { NavController,IonSlides,LoadingController,ToastController } from "@ionic/angular";
 import { registerLocaleData } from "@angular/common";
 import { AuthService } from "./../../services/auth.service";
 import { User } from "../../services/intefaces/user";
 import { PerfilService } from "../../services/perfil.service";
+import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
 
@@ -27,7 +28,8 @@ private loading: any;
  public loadingCtrl: LoadingController,
  private toastCtrl: ToastController,
  private authService: AuthService,
- private perService: PerfilService
+ private perService: PerfilService,
+ private route: Router
 ) {}
 
 
@@ -73,14 +75,10 @@ this.loading.dismiss();
 }
 }
 
-
-// Método de recuperação de senha 
-async recSenha(){
-var auth = firebase.auth();
-auth.sendPasswordResetEmail(this.userLogin.email).then(function() {
-}).catch(function(error) {
-});
-}
+// Caminho Redefinir
+ paginaRedefinir() {
+    this.route.navigate(['redefinir']);
+  }
 
 // Método de Registro
 async register() {

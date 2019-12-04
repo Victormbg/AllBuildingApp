@@ -1,0 +1,43 @@
+<ion-content class="swiper-no-swiping bg-image no-scroll" class="ion-padding ion-text-center">
+<div class="container">
+
+<ion-back-button defaultHref="/home"></ion-back-button>
+
+<!--Logotipo -->
+<ion-img src="../../../assets/img/AppLogo.png"></ion-img>
+
+<!--Botões Slides-->
+<ion-segment (ionChange)="segmentChanged($event)">
+
+<!--Login-->
+<ion-segment-button value="redefinir">
+<ion-label>Redefinir</ion-label>
+</ion-segment-button>
+
+</ion-segment>
+</div>
+
+<!--Slides-->
+<ion-slides>
+
+<!--Slide Login-->
+<ion-slide>
+<div class="slide-inner ion-padding">
+<ion-title>Redefina sua senha</ion-title>
+
+
+<!--Campo Email Login-->
+<ion-list>
+<ion-item class=ion-margin-top lines="none">
+<ion-input placeholder="E-mail" type="email"[(ngModel)]="userLogin.email"></ion-input>
+</ion-item>
+</ion-list>
+
+
+<!--Botão redefinir senha-->
+<ion-button  class=ion-magin-top color=warning (click)="recSenha()">Redefinir Senha</ion-button>
+</div>			
+</ion-slide>
+
+</ion-slides>
+</ion-content>
