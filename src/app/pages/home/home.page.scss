@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap");
 
 ion-slides {
-  height: 60%;
+  height: 65%;
   .slide-inner {
-    width: 100%;
+    width: 95%;
     color: rgb(255, 255, 255);
     background-color: green !important;
     border-radius: 20px;
@@ -23,7 +23,6 @@ ion-item {
 
 ion-input {
   --color: rgb(12, 12, 12);
-  //--background: green !important;
   font-family: "Open Sans", sans-serif;
 }
 ion-img {

@@ -1,23 +1,29 @@
+<!--Barra Superior-->
 <ion-header>
-	<ion-toolbar>
-		<ion-title>Destaque</ion-title>
-	</ion-toolbar>
+<ion-toolbar>
+<ion-title>Destaque</ion-title>
+</ion-toolbar>
 </ion-header>
+
+<!--Conteudo-->
 <ion-content>
-	<ion-list>
-		<ion-item *ngFor="let item of anuncios" [routerLink]="['/pagina-destaque', item.id]">
-			<img src="{{ item.imagem }}" />
-			<ion-label class="ion-text-wrap">
-				<p>
-					<ion-icon name="person"></ion-icon>{{ item.titulo }}
-				</p>
-				<p>
-					<ion-icon name="briefcase"></ion-icon>{{ item.especialidade }}
-				</p>
-				<p>
-					<ion-icon name="call"></ion-icon>{{ item.tel }}
-				</p>
-			</ion-label>
-		</ion-item>
-	</ion-list>
+<ion-list>
+<ion-item *ngFor="let item of anuncios" [routerLink]="['/pagina-destaque', item.id]">
+
+<!--Imagens-->
+<img src="{{ item.imagem }}" />
+<ion-label class="ion-text-wrap">
+<p>
+<!--Atributos-->
+ion-icon name="person"></ion-icon>{{ item.titulo }}
+</p>
+<p>
+<ion-icon name="briefcase"></ion-icon>{{ item.especialidade }}
+</p>
+<p>
+<ion-icon name="call"></ion-icon>{{ item.tel }}
+</p>
+</ion-label>
+</ion-item>
+</ion-list>
 </ion-content>

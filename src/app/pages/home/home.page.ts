@@ -64,6 +64,10 @@ case "auth/user-not-found":
 message = "Usuário não encontrado";
 break;
 
+case "auth/invalid-email":
+message = "E-mail inválido";
+break;
+
 case "auth/wrong-password":
 message = "Senha incorreta";
 break;
@@ -76,9 +80,9 @@ this.loading.dismiss();
 }
 
 // Caminho Redefinir
- paginaRedefinir() {
-    this.route.navigate(['redefinir']);
-  }
+paginaRedefinir() {
+this.route.navigate(['redefinir']);
+}
 
 // Método de Registro
 async register() {

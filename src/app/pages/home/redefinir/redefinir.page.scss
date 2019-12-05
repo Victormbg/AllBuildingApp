@@ -1,32 +1,54 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap");
 
+
+
 ion-slides {
-  height: 60%;
+  height: 40%;
   .slide-inner {
-    width: 100%;
+    width: 95%;
     color: rgb(255, 255, 255);
     background-color: green !important;
     border-radius: 20px;
   }
 
-  ion-list {
-    background-color: green !important;
-  }
-  ion-item {
-    background-color: green !important;
-  }
+ion-list {
+background-color: green !important;
 }
+
+ion-item {
+background-color: green !important;
+}
+
+ion-input {
+--color: rgb(12, 12, 12);
+font-family: "Open Sans", sans-serif;
+}
+
 ion-item {
   --background: hsl(0, 0%, 85%);
   --border-radius: 10px;
 }
-
+}
 ion-img {
   height: 250px;
 }
+
+ion-segment-button ion-label {
+font-family: "Open Sans", sans-serif;
+}
+
 
 ion-content {
   //--background: url('/assets/img/login.jpg') no-repeat 100% 100%;
  --background: url("/../../../assets/img/login.jpg") 0 0/100% 100% no-repeat;
   font-family: "Open Sans", sans-serif;
+}
+
+ion-button{
+    font-family: "Open Sans", sans-serif;
+}
+
+ion-back-button{
+    --color:black;
+    height: 10px;
 }
