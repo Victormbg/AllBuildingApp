@@ -15,7 +15,21 @@ ion-title {
   font-family: "Open Sans", sans-serif;
 }
 
-ion-back-button{
-    --color:white;
+ion-back-button {
+  --color: white;
 }
 
+ion-item {
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-top-width: 1px;
+  padding: 5px;
+  box-shadow: 1px 1px white;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  color: black;
+  font-size: 18px;
+  padding: 5px;
+}

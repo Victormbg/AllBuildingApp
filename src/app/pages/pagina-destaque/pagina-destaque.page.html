@@ -1,20 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
-    </ion-buttons>
-    <ion-title>
-      Destaque
-      <ion-icon name="star"></ion-icon>
-    </ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			Destaque
+			<ion-icon name="star"></ion-icon>
+		</ion-title>
+	</ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list>
-    <ion-item> <img src="{{ destaques?.imagem }}"/></ion-item>
-    <ion-item>Titulo: {{ destaques?.titulo }}</ion-item>
-    <ion-item>Descriçao: {{ destaques?.descricao }}</ion-item>
-    <ion-item>Especialidade: {{ destaques?.especialidade }}</ion-item>
-    <ion-item>Telefone: {{ destaques?.tel }}</ion-item>
-  </ion-list>
+	<ion-list>
+		<ion-item> <img src="{{ destaques?.imagem }}"/></ion-item>
+			<ion-item>
+				<p>Titulo:</p> {{ destaques?.titulo }}
+			</ion-item>
+			<ion-item>
+				<p>Descriçao:</p> {{ destaques?.descricao }}
+			</ion-item>
+			<ion-item>
+				<p>Especialidade:</p> {{ destaques?.especialidade }}
+			</ion-item>
+			<ion-item>
+				<p>Telefone:</p> {{ destaques?.tel }}
+			</ion-item>
+	</ion-list>
 </ion-content>
