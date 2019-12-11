@@ -29,48 +29,15 @@ ion-img {
   height: 250px;
 }
 
-.slide-inner ion-padding{
-    --background: url("../../../assets/img/imagem1212.png");
-
-    
-}
-
 ion-content {
-  //--background: url('/assets/img/login.jpg') no-repeat 100% 100%;
   --background: url("../../../assets/img/login.jpg") 0 0/100% 100% no-repeat;
   font-family: "Open Sans", sans-serif;
 }
 
-ion-segment-button ion-label{
-    font-family: "Open Sans", sans-serif;
+ion-segment-button ion-label {
+  font-family: "Open Sans", sans-serif;
 }
 
-ion-button{
-    font-family: "Open Sans", sans-serif;
+ion-button {
+  font-family: "Open Sans", sans-serif;
 }
-/*
-
-ion-content{ 
-    background-image: url('/assets/img/login.jpg'); 
-    background-repeat: no-repeat; 
-    background-size:100%; 
-    bottom: 0; 
-    color: black; 
-    left: 0; 
-    overflow: auto; 
-    padding: 3em; 
-    position: absolute; 
-    right: 0; 
-    text-align: center; 
-    top: 0; 
-    background-size: cover; 
-}
-
-html { 
-    background: url('/assets/img/login.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
- }
-*/
