@@ -2,8 +2,10 @@
 <img src="/src/assets/icon/logotipo_transparente.png" width="300px"><br>
 Turma 2018.1 - Senac Bonsucesso
 </p>
-
+<center>
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](http://gitpod.io/#https://github.com/Victormbg/AllBuildingApp)
+</center>
+<br>
 Nome do projeto: All Building
 
 Data início: 23/10/2019
