@@ -22,7 +22,5 @@ Equipe de Desenvolvimento:
 Descrição: Aplicativo voltado para divulgação
 de profissionais da área de construção civil.
 
-COMANDOS
 
-ionic serve -- --disableHostCheck
 
