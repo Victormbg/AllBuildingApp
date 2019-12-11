@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
+// Importações padrões do Ionic
 import { BuscaService } from "../../services/busca.service";
-
+// Importação do BuscaService para listar todos os anuncios
 @Component({
   selector: "app-tab1",
   templateUrl: "tab1.page.html",
@@ -34,7 +35,7 @@ export class Tab1Page {
       console.log(this.anuncios);
     });
   }
-
+  // Metodo que vai mandar o texto escrito como varivel para o filtro.pipe
   buscarAnuncio(event) {
     const texto = event.target.value;
     this.textoBuscar = texto;

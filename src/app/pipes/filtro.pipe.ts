@@ -1,12 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Buscas } from '../services/intefaces/busca'
+import { Buscas } from '../services/intefaces/busca';
+// Importação das variaveis de Busca
 @Pipe({
   name: 'filtro'
 })
 export class FiltroPipe implements PipeTransform {
 
-  transform( anuncios: Buscas[],texto: string): Buscas[] {
-    if( texto.length === 0 ) { return anuncios; }
+  transform( anuncios: Buscas[], texto: string): Buscas[] {
+    if ( texto.length === 0 ) { return anuncios; }
 
     texto = texto.toLocaleLowerCase();
 
