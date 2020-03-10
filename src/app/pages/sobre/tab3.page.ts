@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 
 @Component({
   selector: "app-tab3",
@@ -6,5 +7,10 @@ import { Component } from "@angular/core";
   styleUrls: ["tab3.page.scss"]
 })
 export class Tab3Page {
-  constructor() {}
+  constructor(private iab: InAppBrowser) {}
+
+  OpenUrl() {
+    const browser = this.iab.create("https://www.allbuilding.tk/");
+    browser.close();
+  }
 }

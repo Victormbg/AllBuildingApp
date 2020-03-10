@@ -22,7 +22,7 @@ import {
 } from "@angular/fire/storage";
 import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 import { File } from "@ionic-native/file/ngx";
-
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -35,6 +35,7 @@ import { File } from "@ionic-native/file/ngx";
   ],
   providers: [
     AngularFirestore,
+    InAppBrowser,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
