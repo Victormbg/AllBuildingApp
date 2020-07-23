@@ -1,10 +1,5 @@
-#Projeto All Building
-
-Data início: 23/10/2019
-Data término: 11/12/2019
-
 <p align="center">
-<img src="./src/assets/img/sobre.jpg"  height= 500px width="500px">
+<img src="./src/assets/img/sobre.jpg"  height= 1000px width="1000px">
 Turma 2018.1 - Senac Bonsucesso
 </p>
 
@@ -19,9 +14,6 @@ Equipe de Desenvolvimento:
 - Flávius Caio
 - Igor Lopes
 - Victor Manuel
-
-Descrição: Aplicativo voltado para divulgação
-de profissionais da área de construção civil.
 
 <!-- Login -->
 <p align="center">
