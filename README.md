@@ -1,8 +1,3 @@
-<p align="center">
-<img src="./src/assets/img/sobre.jpg"  height= 1000px width="1000px">
-Turma 2018.1 - Senac Bonsucesso
-</p>
-
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](http://gitpod.io/#https://github.com/Victormbg/AllBuildingApp)
 <br>
 
