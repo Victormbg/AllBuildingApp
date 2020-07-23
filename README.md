@@ -37,7 +37,7 @@ Equipe de Desenvolvimento:
 
 <!-- Perfil -->
 <p align="center">
-<img src="./src/assets/img/login.png" width="300px"><br>
+<img src="./src/assets/img/perfil.png" width="300px"><br>
 </p>
 
 <!-- Sobre -->
