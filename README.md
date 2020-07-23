@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./src/assets/img/sobre.jpg" width="300px"><br>
+<img src="./src/assets/img/sobre.jpg" width="500px"><br>
 Turma 2018.1 - Senac Bonsucesso
 </p>
 
