@@ -7,16 +7,16 @@ ion-slides {
   .slide-inner {
     width: 95%;
     color: rgb(255, 255, 255);
-    background-color: green !important;
+    background-color:  rgba(60, 63, 60, 0.603)  !important;
     border-radius: 20px;
   }
 
 ion-list {
-background-color: green !important;
+background-color: rgba(92, 95, 92, 0)   !important;
 }
 
 ion-item {
-background-color: green !important;
+background-color:  rgba(92, 95, 92, 0)  !important;
 }
 
 ion-input {
@@ -35,6 +35,7 @@ ion-img {
 
 ion-segment-button ion-label {
 font-family: "Open Sans", sans-serif;
+margin-bottom: 85%;
 }
 
 
